@@ -18,4 +18,13 @@ export class HeroDetailComponent {
     private location: Location, 
     private heroService: HeroService
     ) {}
+
+  ngOnInit(): void {
+    this.getHero();
+  }
+
+  getHero(): void {
+    const id=Number(this.route.snapshot.paramMap.get('id'));
+    this.heroService.getHero(id).subscribe(hero => this.hero=hero);
+  }
 }
