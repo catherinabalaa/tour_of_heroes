@@ -11,7 +11,7 @@ import { HeroService } from '../hero.service';
 })
 export class HeroDetailComponent {
 
-  @Input() hero?: Hero;
+  hero: Hero | undefined;
 
   constructor(
     private route: ActivatedRoute, 
