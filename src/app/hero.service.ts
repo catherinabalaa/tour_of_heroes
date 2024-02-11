@@ -16,11 +16,15 @@ export class HeroService {
     private messageService: MessageService, 
     private http: HttpClient) { }
 
-  getHeroes():Observable<Hero[]> {
-    const heroes=of(HEROES);
-    this.messageService.add('HeroService: fetched heroes');
-    return heroes;
-  }
+  // getHeroes():Observable<Hero[]> {
+  //   const heroes=of(HEROES);
+  //   this.messageService.add('HeroService: fetched heroes');
+  //   return heroes;
+  // }
+
+  getHeroes(): Observable<Hero[]> {
+    return this.http.get<Hero[]>(this.heroesUrl)
+  } //get heroes from the server
 
   getHero(id: number): Observable<Hero> {
     const hero=HEROES.find(h=>h.id===id)!;
